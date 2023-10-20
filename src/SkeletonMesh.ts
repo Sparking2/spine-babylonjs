@@ -156,7 +156,6 @@ export default class SkeletonMesh extends Mesh {
 				uvs = mesh.uvs;
 				texture = mesh.region!.texture as BabylonJsTexture;
 			} else if (attachment instanceof ClippingAttachment) {
-				console.log("is instance of ClippingAttachment");
 				clipper.clipStart(slot, attachment);
 				continue;
 			} else {
