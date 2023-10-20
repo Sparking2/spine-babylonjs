@@ -9,4 +9,4 @@ to install use
 pnpm add -D spine-babylonjs
 ````
 
-you also need to have babylonjs added to your project.
+It requires to have spine-core and babylon-core
