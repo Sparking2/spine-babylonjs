@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@esotericsoftware/spine-core':
+    specifier: ^4.2.23
+    version: 4.2.23
+
 devDependencies:
   '@babylonjs/core':
     specifier: ^6.25.0
@@ -11,9 +16,6 @@ devDependencies:
   '@babylonjs/inspector':
     specifier: ^6.25.0
     version: 6.25.0(@babylonjs/core@6.25.0)(@babylonjs/gui-editor@6.25.0)(@babylonjs/gui@6.25.0)(@babylonjs/loaders@6.25.0)(@babylonjs/materials@6.25.0)(@babylonjs/serializers@6.25.0)(@types/react-dom@18.2.14)(@types/react@18.2.31)
-  '@esotericsoftware/spine-core':
-    specifier: ^4.2.23
-    version: 4.2.23
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.8.0
     version: 6.8.0(@typescript-eslint/parser@6.8.0)(eslint@8.51.0)(typescript@5.2.2)
@@ -161,7 +163,7 @@ packages:
 
   /@esotericsoftware/spine-core@4.2.23:
     resolution: {integrity: sha512-B6A5O4X5oDNIvhIfT+b1tXEXtYNzNhx6V1Qak0VOQYoQbHNrTgsSt+QJ6j4A/xDxwnegG08sV5RQCTRA6sZq9g==}
-    dev: true
+    dev: false
 
   /@fortawesome/fontawesome-common-types@6.4.2:
     resolution: {integrity: sha512-1DgP7f+XQIJbLFCTX1V2QnxVmpLdKdzzo2k8EmvDOePfchaIGQ9eCHj2up3/jNEbZuBqel5OxiaOJf37TWauRA==}

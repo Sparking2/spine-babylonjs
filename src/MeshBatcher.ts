@@ -1,9 +1,9 @@
 /** @format */
 
-import {Mesh} from "@babylonjs/core/Meshes/mesh";
-import {Scene} from "@babylonjs/core/scene";
-import {ActionManager} from "@babylonjs/core/Actions/actionManager";
-import {VertexData} from "@babylonjs/core/Meshes/mesh.vertexData";
+import { Mesh } from "@babylonjs/core/Meshes/mesh";
+import { Scene } from "@babylonjs/core/scene";
+import { ActionManager } from "@babylonjs/core/Actions/actionManager";
+import { VertexData } from "@babylonjs/core/Meshes/mesh.vertexData";
 import SkeletonMeshMaterial from "./SkeletonMeshMaterial";
 
 export default class MeshBatcher extends Mesh {

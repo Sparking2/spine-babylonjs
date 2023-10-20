@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>spine-babylonjs</title>
+    <style>
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+<canvas id="renderCanvas"></canvas>
+<script src="https://cdn.babylonjs.com/babylon.js"></script>
+<script type="module" src="../dist/index.js"></script>
+<script>
+    let assetManager;
+    let skeletonMesh;
+    const baseUrl = "assets/";
+    const skeletonFile = "raptor-pro.json";
+    const atlasFile = skeletonFile
+        .replace("-pro", "")
+        .replace("-ess", "")
+        .replace(".json", ".atlas");
+    const animation = "roar";
+
+    let engine, scene, camera;
+    const cameraRadius = 10;
+    let lastFrameTime = Date.now() / 1000;
+
+    function init() {
+        const canvas = document.getElementById('renderCanvas');
+
+        engine = new BABYLON.Engine(canvas, true, {stencil: true});
+        scene = new BABYLON.Scene(engine);
+        scene.clearColor = new BABYLON.Color4(0.5, 0.5, 0.5);
+        scene.ambientColor = new BABYLON.Color3(1, 1, 1);
+        scene.debugLayer.show();
+
+        camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
+        camera.setPosition(new BABYLON.Vector3(0, 0, -cameraRadius));
+        camera.attachControl(canvas, true);
+
+        assetManager = new AssetManager(scene,baseUrl);
+        // assetManager.loadText(skeletonFile);
+        // assetManager.loadTextureAtlas(atlasFile);
+
+        // requestAnimationFrame(load);
+
+        engine.runRenderLoop(()=>{
+            scene.render();
+        })
+    }
+
+    function load(){
+        if(assetManager.isLoadingComplete()){
+            console.log("loaded!");
+
+            const mat = new BABYLON.StandardMaterial("texture1", scene);
+            mat.diffuseColor = new BABYLON.Color3(1, 0, 0);
+            mat.emissiveColor = new BABYLON.Color3(1, 0, 0);
+            mat.alpha = 1.0;
+            mat.wireframe = true;
+            const box = BABYLON.MeshBuilder.CreateBox("redBox", { size: 1 }, scene);
+            box.material = mat;
+
+        } else requestAnimationFrame(load);
+    }
+
+    function render(){
+        const now = Date.now() / 1000;
+        const delta = now - lastFrameTime;
+        lastFrameTime = now;
+        skeletonMesh.update(delta);
+        requestAnimationFrame(render);
+    }
+
+    init();
+</script>
+</body>
+</html>

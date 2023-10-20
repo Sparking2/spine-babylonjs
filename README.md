@@ -6,7 +6,7 @@ Based on the official threejs runtime.
 
 to install use 
 ````
-pnpm add -D @esotericsoftware/spine-core spine-babylonjs
+pnpm add -D spine-babylonjs
 ````
 
 you also need to have babylonjs added to your project.
